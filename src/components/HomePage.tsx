@@ -9,8 +9,11 @@ export function HomePage() {
   const [showCelebration, setShowCelebration] = useState(false);
   const [showMembers, setShowMembers] = useState(false);
 
-  const targetDate = new Date('2025-12-02T16:30:00+05:30');
-  const celebrationEndDate = new Date('2025-12-02T18:00:00+05:30');
+  // const targetDate = new Date('2025-12-02T16:30:00+05:30');
+  // const celebrationEndDate = new Date('2025-12-02T18:00:00+05:30');
+  
+  const targetDate = new Date('2025-12-02T11:15:00+05:30');
+  const celebrationEndDate = new Date('2025-12-02T11:30:00+05:30');
 
   useEffect(() => {
     const now = new Date();
