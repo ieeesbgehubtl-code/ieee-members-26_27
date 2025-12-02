@@ -41,6 +41,9 @@ export function MembersList() {
           <p className="text-xl md:text-2xl text-blue-300 font-semibold">
             Welcome to IEEE Student Branch Family
           </p>
+          <p className="text-xl md:text-2xl text-blue-300 font-semibold">
+            Graphic Era Hill University, Bhimtal
+          </p>
 
           <div className="bg-blue-950 bg-opacity-50 border-2 border-blue-400 rounded-lg p-6 max-w-3xl mx-auto">
             <p className="text-lg text-gray-300 mb-4">
