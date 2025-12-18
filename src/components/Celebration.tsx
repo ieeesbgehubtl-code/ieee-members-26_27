@@ -50,7 +50,7 @@ export function Celebration({ onComplete }: CelebrationProps) {
               Congratulations! 🎉
             </h1>
             <p className="text-xl md:text-2xl text-blue-300">
-              Revealing the new members...
+              Revealing the positions of selected members...
             </p>
           </div>
         </div>

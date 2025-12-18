@@ -1,24 +1,24 @@
 import { useState, useMemo } from 'react';
-import { Search, Filter, Award, Instagram, Linkedin, Globe, FileText, ExternalLink } from 'lucide-react';
-import { members } from '../types/member';
+import { Search, Filter } from 'lucide-react';
+import { m } from '../types/member';
 
-export function MembersList() {
+export function Members() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCourse, setSelectedCourse] = useState<string>('All');
   const [selectedYear, setSelectedYear] = useState<string>('All');
 
   const courses = useMemo(() => {
-    const uniqueCourses = Array.from(new Set(members.map(m => m.course)));
+    const uniqueCourses = Array.from(new Set(m.map(m => m.course)));
     return ['All', ...uniqueCourses.sort()];
   }, []);
 
   const years = useMemo(() => {
-    const uniqueYears = Array.from(new Set(members.map(m => m.year)));
+    const uniqueYears = Array.from(new Set(m.map(m => m.year)));
     return ['All', ...uniqueYears.sort()];
   }, []);
 
   const filteredMembers = useMemo(() => {
-    return members.filter(member => {
+    return m.filter(member => {
       const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCourse = selectedCourse === 'All' || member.course === selectedCourse;
       const matchesYear = selectedYear === 'All' || member.year === selectedYear;
@@ -29,43 +29,6 @@ export function MembersList() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-8 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 space-y-6">
-          <div className="flex items-center justify-center gap-4">
-            <Award className="w-12 h-12 text-yellow-400" />
-            <h1 className="text-4xl md:text-6xl font-bold text-white">
-              Congratulations!
-            </h1>
-            <Award className="w-12 h-12 text-yellow-400" />
-          </div>
-
-          <p className="text-xl md:text-2xl text-blue-300 font-semibold">
-            Welcome to IEEE Student Branch Family
-          </p>
-          <p className="text-xl md:text-2xl text-blue-300 font-semibold">
-            Graphic Era Hill University, Bhimtal
-          </p>
-
-          <div className="bg-blue-950 bg-opacity-50 border-2 border-blue-400 rounded-lg p-6 max-w-3xl mx-auto">
-            <p className="text-lg text-gray-300 mb-4">
-              🎉 All the selected members will be contacted very soon.
-            </p>
-            <p className="text-base text-gray-400">
-              Stay connected with us on our social platforms for updates, events, and opportunities!
-            </p>
-            <div className="flex items-center justify-center gap-6 mt-6">
-              <a href="https://www.instagram.com/ieee.sb.gehubtl/" target="_blank" rel="noopener noreferrer" className="text-pink-400 hover:text-pink-300 transition-colors">
-                <Instagram className="w-8 h-8" />
-              </a>
-              <a href="https://www.linkedin.com/company/ieee-sb-gehubtl/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">
-                <Linkedin className="w-8 h-8" />
-              </a>
-              <a href="https://studentbranches.ieee.org/in-gehub" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
-                <Globe className="w-8 h-8" />
-              </a>
-            </div>
-          </div>
-        </div>
-
         <div className="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl shadow-2xl p-6 mb-8 border border-blue-500">
           <div className="flex items-center gap-3 mb-6">
             <Filter className="w-6 h-6 text-blue-400" />
@@ -106,7 +69,7 @@ export function MembersList() {
           </div>
 
           <div className="mt-4 text-gray-400">
-            Showing {filteredMembers.length} of {members.length} members
+            Showing {filteredMembers.length} of {m.length} members
           </div>
         </div>
 
@@ -139,7 +102,7 @@ export function MembersList() {
                     className="hover:bg-blue-900 hover:bg-opacity-20 transition-colors"
                   >
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                      {members.indexOf(member) + 1}
+                      {m.indexOf(member) + 1}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
                       {member.name}
@@ -150,9 +113,9 @@ export function MembersList() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                       {member.year}
                     </td>
-                    <a href='https://docs.google.com/document/d/1iY1-pwzNkH87C3BUr7MZV1B5no5IZJouePPIzmfoHqw/edit?usp=sharing' target='_blank' title='Click to view roles & resposibilities'><td className="px-6 py-4 underline whitespace-nowrap text-sm text-yellow-400 font-medium">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-400 font-medium">
                       {member.position}
-                    </td></a>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -165,30 +128,6 @@ export function MembersList() {
             </div>
           )}
         </div>
-        
-
-          {/* Roles & Responsibilities Section */}
-          <div className="mt-8 max-w-3xl mx-auto text-center">
-            <div className="bg-gray-800 bg-opacity-60 border border-yellow-400 rounded-xl p-6 shadow-xl">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <FileText className="w-6 h-6 text-yellow-400" />
-                <h2 className="text-2xl font-bold text-white">Roles & Responsibilities</h2>
-              </div>
-              <p className="text-gray-300 mb-6">
-                All members are requested to carefully review their assigned roles and responsibilities
-                to ensure smooth functioning of the IEEE Student Branch.
-              </p>
-              <a
-                href="https://docs.google.com/document/d/1iY1-pwzNkH87C3BUr7MZV1B5no5IZJouePPIzmfoHqw/edit?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-yellow-400 text-gray-900 font-semibold hover:bg-yellow-300 transition-colors"
-              >
-                View Roles & Responsibilities
-                <ExternalLink className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
       </div>
     </div>
   );

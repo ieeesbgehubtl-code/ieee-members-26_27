@@ -4,13 +4,14 @@ import { CountdownTimer } from './CountdownTimer';
 import { Celebration } from './Celebration';
 import { MembersList } from './MembersList';
 import { Footer } from './Footer';
+import { Members } from './Members';
 
 export function HomePage() {
   const [showCelebration, setShowCelebration] = useState(false);
   const [showMembers, setShowMembers] = useState(false);
 
-  const targetDate = new Date('2025-12-02T16:30:00+05:30');
-  const celebrationEndDate = new Date('2025-12-02T18:00:00+05:30');
+  const targetDate = new Date('2025-12-31T16:30:00+05:30');
+  const celebrationEndDate = new Date('2025-12-31T18:00:00+05:30');
 
   useEffect(() => {
     const now = new Date();
@@ -50,18 +51,18 @@ export function HomePage() {
           <div className="flex justify-between items-center px-4 sm:px-6 lg:px-8 py-6 h-24">
             
             {/* Left Logo */}
-            <img 
+            <a href='https://gehu.ac.in/bhimtal/' target='_blank'><img 
               src="/assets/gehulogo.svg"
               alt="Graphic Era Hill University Logo"
               className="h-28 md:h-32 w-auto"
-            />
+            /></a>
 
             {/* Right Logo */}
-            <img 
+            <a href='https://studentbranches.ieee.org/in-gehub/' target='_blank'><img 
               src="/assets/ieeesblogo.svg"
               alt="IEEE Student Branch Logo"
               className="h-20 md:h-24 w-auto"
-            />
+            /></a>
           </div>
         </div>
 
@@ -84,7 +85,7 @@ export function HomePage() {
                 <div className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 rounded-full px-8 py-4 shadow-2xl">
                   <h2 className="text-2xl md:text-3xl font-bold text-white flex items-center gap-3">
                     <Users className="w-8 h-8" />
-                    New Members Reveal
+                    Selected Members Position Reveal
                   </h2>
                 </div>
               </div>
@@ -119,6 +120,8 @@ export function HomePage() {
             </div>
           </div>
         </div>
+
+        <Members />
 
         <Footer />
       </div>
